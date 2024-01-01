@@ -8,9 +8,9 @@ object State {
 
   case object Terminate extends State
 
-  case class Menu(game: Option[Game]) extends State
+  case class Menu(game: Option[Game], footerMessage: MenuFooterMessage) extends State
 
   case class Pause() extends State
 
-  val initial: State = Menu(game = None)
+  val initial: State = Menu(game = None, MenuFooterMessage.Empty)
 }
