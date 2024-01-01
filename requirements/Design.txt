@@ -1,0 +1,22 @@
+On a high level the problem that has to be solved is
+    1. Game needs to continuously display something in the UI and consume user input for the next steps
+    2. Game can quit when user choose to quit
+
+* so we need something like a loop which can be stopped when we reach a terminal state
+
+Games looks to have 3 major mode in which user will have different flow of events and each mode seems to have its own set of fields/state
+
+If we have to visualize:
+    - it should have a Menu Mode - [Menu has its own views and its own set of options to choose from]
+    - it should have a Game Mode for the ongoing Game - [Game renders its own views , shows its own options]
+    - it should have a Pause Mode - [Pause mode essentially opens the menu where user can either resume or decide to start a new game or quit]
+
+* On a high level each mode has only 2 functionality
+   1. render the current state
+   2. Process user input
+
+
+
+
+
+
