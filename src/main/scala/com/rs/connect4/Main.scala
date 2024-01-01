@@ -6,6 +6,7 @@ import com.rs.connect4.loop.GameLoop
 import com.rs.connect4.mode.game.GameModeLive
 import com.rs.connect4.mode.menu.MenuModeLive
 import com.rs.connect4.mode.pause.PauseModeLive
+import com.rs.connect4.parser.menu.MenuCommandParserLive
 import com.rs.connect4.ui.{ConsoleUI, UI}
 import com.rs.connect4.view.menu.MenuViewLive
 
@@ -17,7 +18,8 @@ object Main extends App {
 
     val menuMode = {
       val menuView = MenuViewLive()
-      MenuModeLive(view = menuView)
+      val parser = MenuCommandParserLive()
+      MenuModeLive(view = menuView, parser = parser)
     }
 
     val gameMode = {
