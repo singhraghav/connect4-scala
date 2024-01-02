@@ -4,7 +4,7 @@ import com.rs.connect4.domain.MenuFooterMessage
 final case class MenuViewLive() extends MenuView {
   override def header: String =
     """
-      |______   ______   .__   __. .__   __.  _______   ______ .___________.    _  _
+      |  ______   ______   .__   __. .__   __.  _______   ______ .___________.    _  _
       | /      | /  __  \  |  \ |  | |  \ |  | |   ____| /      ||           |   | || |
       ||  ,----'|  |  |  | |   \|  | |   \|  | |  |__   |  ,----'`---|  |----`   | || |_
       ||  |     |  |  |  | |  . `  | |  . `  | |   __|  |  |         |  |        |__   _|

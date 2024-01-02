@@ -1,10 +1,14 @@
 package com.rs.connect4.domain
 
 
-sealed trait GameFooterMessage
+sealed trait RunningGameFooterMessage
 
-object GameFooterMessage {
+object RunningGameFooterMessage {
+  case object Empty extends RunningGameFooterMessage
 
+  case object InValidCommand extends RunningGameFooterMessage
+
+  case object ColumnFull extends RunningGameFooterMessage
 }
 
 sealed trait MenuFooterMessage
@@ -14,3 +18,16 @@ object MenuFooterMessage {
 
   final case object InvalidCommand extends MenuFooterMessage
 }
+
+
+sealed trait InitilazingGameFooterMessage
+
+object InitilazingGameFooterMessage {
+
+  case object Empty extends InitilazingGameFooterMessage
+
+  case object InValidCommand extends InitilazingGameFooterMessage
+
+  case class SelectionError(message: String) extends InitilazingGameFooterMessage
+}
+
