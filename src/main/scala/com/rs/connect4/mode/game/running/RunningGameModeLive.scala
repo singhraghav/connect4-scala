@@ -13,8 +13,13 @@ case class RunningGameModeLive(view: RunningView, parser: RunningCommandParser, 
         case RunningGameCommand.Put(column) => putField(column, state)
       }.getOrElse(state.copy(footerMessage = RunningGameFooterMessage.InValidCommand))
 
-
-  private def putField(column: Int, state: State.RunningGame): Either[AppError, State.RunningGame] = ???
+  private def putField(column: Int, state: State.RunningGame): Either[AppError, State.RunningGame] = {
+    val (currentPlayer, remainingTurns) = state.players.dequeue
+    for {
+      updatedBoard <- gameLogic.putPiece(state.board, column, currentPlayer.piece)
+      newResult    <- Right(gameLogic.gameResult(column, state.board.rowValueWherePieceWillLand(column), currentPlayer.piece))
+    } yield state.copy(board = updatedBoard, remainingTurns.enqueue(currentPlayer), result = newResult)
+  }
 
   override def render(state: State.RunningGame): String =
     List(

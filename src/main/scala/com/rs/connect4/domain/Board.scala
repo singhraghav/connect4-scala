@@ -10,7 +10,7 @@ object Board {
   type Column = Int
 
   def apply(): Board = {
-    val grid = ArrayBuffer.fill(6, 7)("")
+    val grid = ArrayBuffer.fill(6, 7)("-")
     val rowValueWherePieceWillLand = (0 to 7).map(i => (i, 0)).toMap[Column, Int]
     new Board(grid, rowValueWherePieceWillLand)
   }

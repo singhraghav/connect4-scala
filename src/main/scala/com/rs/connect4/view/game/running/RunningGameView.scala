@@ -32,6 +32,7 @@ case class RunningGameView() extends RunningView {
       board
         .grid
         .toList
+        .reverse
         .map { row =>
           row.toList.map(_.toUpperCase()).mkString("║  ", "  ║  ", "  ║")
         }

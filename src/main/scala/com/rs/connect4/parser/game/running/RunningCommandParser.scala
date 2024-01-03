@@ -14,7 +14,7 @@ case class RunningCommandParser() {
       case other =>
         val mayBeValidColumnNumber = Try(other.toInt)
         mayBeValidColumnNumber match {
-          case Success(column) if column >= 1 || column <= 7 => Right(Put(column))
+          case Success(column) if column >= 1 || column <= 7 => Right(Put(column - 1))
           case _ => Left(ParseError)
         }
     }
