@@ -25,7 +25,22 @@ case class RunningGameView() extends RunningView {
     }
   }
 
-  override def content(board: Board, result: GameResult): String = ???
+  override def content(board: Board, result: GameResult): String = {
+    val numOfColumns = board.grid(0).size
+    val rowSeparator = s"""╬═════╬${"═════╬" * (numOfColumns - 1)}"""
+    val gridAsString =
+      board
+        .grid
+        .toList
+        .map { row =>
+          row.toList.map(_.toUpperCase()).mkString("║  ", "  ║  ", "  ║")
+        }
+        .mkString(s"\n$rowSeparator\n")
+    val colHeader = (1 to numOfColumns).map(_.toString).mkString("   ", "     ", "   ")
+    val enclosingLine = s"""${"╬═════" * numOfColumns}╬"""
+
+    s"""$colHeader\n$enclosingLine\n$gridAsString\n$enclosingLine"""
+  }
 
   override def footer(message: RunningGameFooterMessage): String = message match {
     case RunningGameFooterMessage.Empty => ""

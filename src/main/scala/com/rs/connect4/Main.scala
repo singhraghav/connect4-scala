@@ -2,6 +2,7 @@ package com.rs.connect4
 
 import com.rs.connect4.controller.GameController
 import com.rs.connect4.domain.State
+import com.rs.connect4.gamelogic.GameLogicLive
 import com.rs.connect4.loop.GameLoop
 import com.rs.connect4.mode.game.GameModeLive
 import com.rs.connect4.mode.game.initializing.{InitializingGameMode, InitializingGameModeLive}
@@ -9,9 +10,11 @@ import com.rs.connect4.mode.game.running.{RunningGameMode, RunningGameModeLive}
 import com.rs.connect4.mode.menu.MenuModeLive
 import com.rs.connect4.mode.pause.PauseModeLive
 import com.rs.connect4.parser.game.initializing.InitializingCommandParser
+import com.rs.connect4.parser.game.running.RunningCommandParser
 import com.rs.connect4.parser.menu.MenuCommandParserLive
 import com.rs.connect4.ui.{ConsoleUI, UI}
 import com.rs.connect4.view.game.initializing.InitializingViewLive
+import com.rs.connect4.view.game.running.RunningGameView
 import com.rs.connect4.view.menu.MenuViewLive
 
 object Main extends App {
@@ -32,7 +35,7 @@ object Main extends App {
       }
 
       val runningGameMode: RunningGameMode = {
-        RunningGameModeLive()
+        RunningGameModeLive(RunningGameView(), RunningCommandParser(), GameLogicLive())
       }
       GameModeLive(initializingMode, runningGameMode)
     }
