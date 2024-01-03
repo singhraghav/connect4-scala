@@ -1,11 +1,20 @@
 package com.rs.connect4.mode.game.running
-import com.rs.connect4.domain.State
+import com.rs.connect4.domain.{AppError, MenuFooterMessage, RunningGameCommand, RunningGameFooterMessage, State}
+import com.rs.connect4.gamelogic.GameLogic
 import com.rs.connect4.parser.game.running.RunningCommandParser
 import com.rs.connect4.view.game.running.RunningView
 
-case class RunningGameModeLive(view: RunningView, parser: RunningCommandParser) extends RunningGameMode {
+case class RunningGameModeLive(view: RunningView, parser: RunningCommandParser, gameLogic: GameLogic) extends RunningGameMode {
 
-  override def process(input: String, state: State.RunningGame): State = ???
+  override def process(input: String, state: State.RunningGame): State =
+    parser.parse(input)
+      .flatMap {
+        case RunningGameCommand.Menu => Right(State.Menu(game = Some(state), MenuFooterMessage.Empty))
+        case RunningGameCommand.Put(column) => putField(column, state)
+      }.getOrElse(state.copy(footerMessage = RunningGameFooterMessage.InValidCommand))
+
+
+  private def putField(column: Int, state: State.RunningGame): Either[AppError, State.RunningGame] = ???
 
   override def render(state: State.RunningGame): String =
     List(
