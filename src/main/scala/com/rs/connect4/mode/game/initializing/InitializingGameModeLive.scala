@@ -1,9 +1,12 @@
 package com.rs.connect4.mode.game.initializing
 import com.rs.connect4.domain.AppError.{InvalidPlayer, ParseError}
 import com.rs.connect4.domain.InitializingGameCommands.{AddPlayer, InsertPlayerDetails, Quit, StartGame}
-import com.rs.connect4.domain.{AppError, InitilazingGameFooterMessage, Piece, Player, State}
+import com.rs.connect4.domain.State.RunningGame
+import com.rs.connect4.domain.{AppError, Board, GameResult, InitilazingGameFooterMessage, Piece, Player, RunningGameFooterMessage, State}
 import com.rs.connect4.parser.game.initializing.InitializingCommandParser
 import com.rs.connect4.view.game.initializing.InitializingView
+
+import scala.collection.immutable.Queue
 
 case class InitializingGameModeLive(view: InitializingView, parser: InitializingCommandParser) extends InitializingGameMode {
 
@@ -18,7 +21,7 @@ case class InitializingGameModeLive(view: InitializingView, parser: Initializing
       .flatMap {
         case AddPlayer => Right(state.copy(enteringPlayerDetails = true))
         case Quit => Right(State.Terminate)
-        case StartGame => Right(???)
+        case StartGame => Right(RunningGame(Board(), Queue.from(state.players), GameResult.OnGoing, RunningGameFooterMessage.Empty))
         case InsertPlayerDetails(name, colorCode) =>
           state.players.find(_.piece.color == colorCode)
             .map(existingPlayer => Left(InvalidPlayer(s"Error: Color Code Should Be Unique For Every Player, ${existingPlayer.name} already selected color $colorCode")))

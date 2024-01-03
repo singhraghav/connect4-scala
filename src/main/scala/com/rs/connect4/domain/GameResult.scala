@@ -5,7 +5,7 @@ sealed trait GameResult
 object GameResult {
   case object OnGoing extends GameResult
 
-  case class Win(piece: Piece) extends GameResult
+  case class Win(player: Player) extends GameResult
 
   case object Draw extends GameResult
 }

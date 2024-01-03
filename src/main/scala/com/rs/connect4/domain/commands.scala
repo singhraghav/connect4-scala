@@ -38,3 +38,11 @@ object InitializingGameCommands {
 
   final case object Quit extends InitializingGameCommands
 }
+
+sealed trait RunningGameCommand
+
+object RunningGameCommand {
+  case object Menu extends RunningGameCommand
+
+  case class Put(column: Int) extends RunningGameCommand
+}
