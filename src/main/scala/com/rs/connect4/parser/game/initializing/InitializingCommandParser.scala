@@ -10,6 +10,6 @@ case class InitializingCommandParser() {
       case "add player" => Right(AddPlayer)
       case "quit"       => Right(Quit)
       case "start game" => Right(StartGame)
-      case other        => InsertPlayerDetails.fromString(other)
+      case other        => InsertPlayerDetails.fromString(input)
     }
 }
