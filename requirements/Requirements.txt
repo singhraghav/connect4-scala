@@ -4,11 +4,9 @@ when the game starts
 2. if user choose to quit the program exits
 3. if the user chooses to start a new game
     - 1. screen changes to enter player details , details has the option to choose color like red or yellow, player name etc
-    - 2. once the user details are there , a new screen appears for a toss and the player which wins the toss starts the game
     - 3. Now users can play till either one wins or game goes to a draw
     - 4. within a game user can choose menu option instead of playing
     - 5. if there was a game running menu shows 3 option
           - 1. resume game
           - 2. quit
           - 3. start a new game
-          * if user decides to quit and there is an ongoing game show a warning and ask for confirmation [say the quitting will stop the game and progress will be lost]

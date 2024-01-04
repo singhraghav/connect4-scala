@@ -11,7 +11,7 @@ final case class MenuModeLive(view: MenuView, parser: MenuCommandParser) extends
       .parse(input)
       .map {
         case NewGame => InitilazingGame(players = List.empty[Player], enteringPlayerDetails = false, InitilazingGameFooterMessage.Empty)
-        case Resume  => ???
+        case Resume  => state.game.getOrElse(state.copy(footerMessage = MenuFooterMessage.InvalidCommand))
         case Quit    => State.Terminate
       }.getOrElse(state.copy(footerMessage = MenuFooterMessage.InvalidCommand))
 

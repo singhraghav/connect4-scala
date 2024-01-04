@@ -2,6 +2,7 @@ package com.rs.connect4.view.menu
 import com.rs.connect4.domain.MenuFooterMessage
 
 final case class MenuViewLive() extends MenuView {
+
   override def header: String =
     """
       |  ______   ______   .__   __. .__   __.  _______   ______ .___________.    _  _
@@ -10,7 +11,6 @@ final case class MenuViewLive() extends MenuView {
       ||  |     |  |  |  | |  . `  | |  . `  | |   __|  |  |         |  |        |__   _|
       ||  `----.|  `--'  | |  |\   | |  |\   | |  |____ |  `----.    |  |           | |
       | \______| \______/  |__| \__| |__| \__| |_______| \______|    |__|           |_|
-      |
       |""".stripMargin
 
   override def content(suspendedRunningGame: Boolean): String = {
