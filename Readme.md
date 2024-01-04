@@ -8,3 +8,9 @@ This project is a console-based implementation of the classic game Connect4, wri
 Once you start the Game the console will have menu loaded up
 
 ![img.png](./screenshots/startupScreen.png)
+
+### Starting a new Game
+
+Selecting new game will move you to initializing screen where you can add player details
+
+![img.png](screenshots/InitializingScreen.png)
