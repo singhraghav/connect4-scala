@@ -30,12 +30,10 @@ Selecting new game will move you to initializing screen where you can add player
  | I | n | i | t | i | a | l | i | z | i | n | g |
  |___|___|___|___|___|___|___|___|___|___|___|___|
 
-
 * Add Player
 * Quit
 
 add player
-
    _   _   _   _   _   _   _   _   _   _   _   _
   / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \
  | I | n | i | t | i | a | l | i | z | i | n | g |
@@ -44,13 +42,12 @@ add player
 
 * Enter Player 1 Name and One Character Code For Board Piece Color separated by ',': e.g - Raghav,R
 
-
 Raghav,R
+
 Initialized Players:
 - [ Name : Raghav , Color : R ]
 
 * Enter Player 2 Name and One Character Code For Board Piece Color separated by ',': e.g - Raghav,R
-
 
 Ankit,W
 
