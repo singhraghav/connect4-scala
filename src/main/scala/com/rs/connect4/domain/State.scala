@@ -21,7 +21,5 @@ object State {
 
   case class Menu(game: Option[Game], footerMessage: MenuFooterMessage) extends State
 
-  case class Pause() extends State
-
   val initial: State = Menu(game = None, MenuFooterMessage.Empty)
 }

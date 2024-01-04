@@ -8,7 +8,6 @@ import com.rs.connect4.mode.game.GameModeLive
 import com.rs.connect4.mode.game.initializing.{InitializingGameMode, InitializingGameModeLive}
 import com.rs.connect4.mode.game.running.{RunningGameMode, RunningGameModeLive}
 import com.rs.connect4.mode.menu.MenuModeLive
-import com.rs.connect4.mode.pause.PauseModeLive
 import com.rs.connect4.parser.game.initializing.InitializingCommandParser
 import com.rs.connect4.parser.game.running.RunningCommandParser
 import com.rs.connect4.parser.menu.MenuCommandParserLive
@@ -40,11 +39,7 @@ object Main extends App {
       GameModeLive(initializingMode, runningGameMode)
     }
 
-    val pauseMode = {
-      PauseModeLive()
-    }
-
-    GameController(menuMode = menuMode, gameMode = gameMode, pauseMode = pauseMode)
+    GameController(menuMode = menuMode, gameMode = gameMode)
   }
 
   GameLoop(ui, controller).run(State.initial)
