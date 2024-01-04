@@ -7,4 +7,4 @@ This project is a console-based implementation of the classic game Connect4, wri
 
 Once you start the Game the console will have menu loaded up
 
-![img.png](screenshots/img.png)
+![img.png](./screenshots/startupScreen.png)
