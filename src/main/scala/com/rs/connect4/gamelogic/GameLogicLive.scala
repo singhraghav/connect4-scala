@@ -11,8 +11,13 @@ case class GameLogicLive() extends GameLogic {
       Left(ColumnFull)
     else {
       board.grid(emptyRowForThisColumns)(column) = piece.color
+      val newEntryForNextFreeRow: (Column, Int) = (column, emptyRowForThisColumns + 1)
       val updatedBoard = {
-        board.copy(rowValueWherePieceWillLand = board.rowValueWherePieceWillLand ++ Map[Column, Int]((column, emptyRowForThisColumns + 1)))
+        board
+          .copy(
+            rowValueWherePieceWillLand = board.rowValueWherePieceWillLand + newEntryForNextFreeRow,
+            totalPiecesOnTheBoard = board.totalPiecesOnTheBoard + 1
+          )
       }
       Right(updatedBoard)
     }
@@ -43,6 +48,7 @@ case class GameLogicLive() extends GameLogic {
     
     if(wonInSouthernDirection() || wonInWesternDirection() || wonInEasternDirection() || wonInOneOfDiagonal())
       GameResult.Win(currentPlayer)
+    else if (board.hasNoEmptySpaceLeft) GameResult.Draw
     else 
       GameResult.OnGoing
   }

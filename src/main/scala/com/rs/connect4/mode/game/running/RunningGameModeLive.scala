@@ -25,7 +25,12 @@ case class RunningGameModeLive(view: RunningView, parser: RunningCommandParser, 
       for {
           updatedBoard <- gameLogic.putPiece(state.board, column, currentPlayer.piece)
           newResult    <- Right(gameLogic.gameResult(column, state.board.rowValueWherePieceWillLand(column), currentPlayer, updatedBoard))
-      } yield state.copy(board = updatedBoard, remainingTurns.enqueue(currentPlayer), result = newResult, footerMessage = RunningGameFooterMessage.Empty)
+      } yield state.copy(
+        board = updatedBoard,
+        remainingTurns.enqueue(currentPlayer),
+        result = newResult,
+        footerMessage = RunningGameFooterMessage.Empty
+      )
     ).fold(_ => state.copy(footerMessage = RunningGameFooterMessage.ColumnFull), identity)
   }
 
