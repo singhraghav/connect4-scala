@@ -6,4 +6,6 @@ object AppError {
   case object ParseError extends AppError
 
   case class InvalidPlayer(message: String) extends AppError
+
+  case object ColumnFull extends AppError
 }
